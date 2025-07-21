@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 spec:
-  package: iad.ocir.io/idwsb3nvxazj/provider-oci:v1.0
+  package: iad.ocir.io/idwsb3nvxazj/provider-oci:v1.0-arm64
   packagePullSecrets:
     - name: ocir-secret
   runtimeConfigRef:
