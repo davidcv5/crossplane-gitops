@@ -1,0 +1,21 @@
+apiVersion: core.oci.upbound.io/v1alpha1
+kind: Subnet
+metadata:
+  name: oke-subnet
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    cidrBlock: "10.0.10.0/24"
+    displayName: "oke-subnet"
+    dnsLabel: "okesubnet"
+    vcnIdRef:
+      name: oke-vcn
+    securityListIdSelector:
+      matchLabels:
+        crossplane.io/name: oke-security-list
+    routeTableIdRef:
+      name: oke-route-table
+  providerConfigRef:
+    name: default

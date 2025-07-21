@@ -1,0 +1,14 @@
+apiVersion: core.oci.upbound.io/v1alpha1
+kind: RouteTable
+metadata:
+  name: oke-route-table
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    displayName: "oke-route-table"
+    vcnIdRef:
+      name: oke-vcn
+  providerConfigRef:
+    name: default

@@ -1,0 +1,7 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: crossplane-core
+  namespace: crossplane-system
+spec:
+  package: xpkg.upbound.io/crossplane/crossplane:v1.18.0

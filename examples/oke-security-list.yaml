@@ -1,0 +1,42 @@
+apiVersion: core.oci.upbound.io/v1alpha1
+kind: SecurityList
+metadata:
+  name: oke-security-list
+  labels:
+    crossplane.io/name: oke-security-list
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    displayName: "oke-security-list"
+    vcnIdRef:
+      name: oke-vcn
+    egressSecurityRules:
+      - destination: "0.0.0.0/0"
+        protocol: "all"
+        stateless: false
+    ingressSecurityRules:
+      - source: "10.0.0.0/16"
+        protocol: "all"
+        stateless: false
+      - source: "0.0.0.0/0"
+        protocol: "6"
+        stateless: false
+        tcpOptions:
+          - max: 22
+            min: 22
+      - source: "0.0.0.0/0"
+        protocol: "6"
+        stateless: false
+        tcpOptions:
+          - max: 6443
+            min: 6443
+      - source: "0.0.0.0/0"
+        protocol: "6"
+        stateless: false
+        tcpOptions:
+          - max: 10250
+            min: 10250
+  providerConfigRef:
+    name: default

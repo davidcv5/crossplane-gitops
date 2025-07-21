@@ -1,0 +1,14 @@
+apiVersion: core.oci.upbound.io/v1alpha1
+kind: Vcn
+metadata:
+  name: oke-vcn
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    cidrBlock: "10.0.0.0/16"
+    displayName: "oke-vcn"
+    dnsLabel: "okevcn"
+  providerConfigRef:
+    name: default

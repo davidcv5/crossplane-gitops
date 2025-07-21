@@ -1,0 +1,20 @@
+apiVersion: containerengine.oci.upbound.io/v1alpha1
+kind: Cluster
+metadata:
+  name: enhanced-cluster
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    name: enhanced-cluster
+    kubernetesVersion: "v1.33.1"
+    vcnIdRef:
+      name: oke-vcn
+    endpointConfig:
+      - isPublicIpEnabled: true
+        subnetIdRef:
+          name: oke-subnet
+    type: ENHANCED_CLUSTER
+  providerConfigRef:
+    name: default
