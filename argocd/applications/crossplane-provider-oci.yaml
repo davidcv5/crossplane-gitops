@@ -21,3 +21,9 @@ spec:
     syncOptions:
       - PrunePropagationPolicy=foreground
       - PruneLast=true
+      - RespectIgnoreDifferences=true
+  ignoreDifferences:
+    - group: pkg.crossplane.io
+      kind: Provider
+      jsonPointers:
+        - /status

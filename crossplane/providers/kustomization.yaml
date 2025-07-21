@@ -7,4 +7,5 @@ resources:
 # Secrets are deployed manually - not via GitOps
 # See secrets/README.md for deployment instructions
 
-namespace: crossplane-system
+# Note: Provider is cluster-scoped, ProviderConfig is namespaced
+# We'll handle namespacing in the individual resource files
