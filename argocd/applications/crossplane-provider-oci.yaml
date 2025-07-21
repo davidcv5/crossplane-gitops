@@ -22,6 +22,7 @@ spec:
       - PrunePropagationPolicy=foreground
       - PruneLast=true
       - RespectIgnoreDifferences=true
+      - SkipDryRunOnMissingResource=true
   ignoreDifferences:
     - group: pkg.crossplane.io
       kind: Provider
