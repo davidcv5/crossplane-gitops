@@ -5,7 +5,7 @@ metadata:
 spec:
   forProvider:
     freeformTags:
-      Environment: "Test"
+      Environment: "Testing"
       Demo: "True"
     description: "Test compartment to validate ProviderConfig updates"
     name: "crossplane-test-2"
