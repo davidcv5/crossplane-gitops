@@ -31,3 +31,12 @@ spec:
                 requests:
                   cpu: 100m
                   memory: 256Mi
+              volumeMounts:
+                - name: oci-config
+                  mountPath: /.oci
+                  readOnly: true
+          volumes:
+            - name: oci-config
+              hostPath:
+                path: /Users/davidcru/.oci
+                type: Directory
