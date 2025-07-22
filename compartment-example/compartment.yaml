@@ -1,0 +1,13 @@
+apiVersion: identity.oci.upbound.io/v1alpha1
+kind: Compartment
+metadata:
+  name: test-compartment-2
+spec:
+  forProvider:
+    freeformTags:
+      Environment: "Test"
+      Demo: "True"
+    description: "Test compartment to validate ProviderConfig updates"
+    name: "crossplane-test-2"
+  providerConfigRef:
+    name: default
