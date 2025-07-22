@@ -6,14 +6,14 @@ metadata:
 data:
   # Resource tracking configuration
   application.resourceTrackingMethod: annotation
-  
+
   # Exclude ProviderConfigUsage to prevent unnecessary reconciliation
   resource.exclusions: |
     - apiGroups:
       - "*"
       kinds:
       - ProviderConfigUsage
-  
+
   # Custom health checks for Crossplane resources
   resource.customizations: |
     "*.upbound.io/*":
@@ -61,4 +61,16 @@ data:
         end
         health_status.status = "Progressing"
         health_status.message = "Waiting for resource status"
+        return health_status
+    "oci.upbound.io/ProviderConfig":
+      health.lua: |
+        health_status = {}
+        -- ProviderConfig doesn't have conditions, just check if it exists and has spec
+        if obj.spec ~= nil then
+          health_status.status = "Healthy"
+          health_status.message = "ProviderConfig is configured"
+          return health_status
+        end
+        health_status.status = "Progressing"
+        health_status.message = "ProviderConfig not properly configured"
         return health_status
