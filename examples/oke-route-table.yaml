@@ -10,5 +10,9 @@ spec:
     displayName: "oke-route-table"
     vcnIdRef:
       name: oke-vcn
+    routeRules:
+      - destination: "0.0.0.0/0"
+        networkEntityIdRef:
+          name: oke-internet-gateway
   providerConfigRef:
     name: default
