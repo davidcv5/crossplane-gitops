@@ -6,8 +6,8 @@ metadata:
     argocd.argoproj.io/sync-wave: "1"
 spec:
   package: iad.ocir.io/iddevjmhjw0n/provider-oci:v1.0-tf-7.10.0
-  packagePullSecrets:
-    - name: ocir-secret
+  # packagePullSecrets:
+  #   - name: ocir-secret
   runtimeConfigRef:
     name: oci-runtime-config
 ---
