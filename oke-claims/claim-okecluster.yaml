@@ -42,8 +42,3 @@ spec:
 
   # OCI region
   region: "us-ashburn-1"
-
-  # Write connection secrets for kubectl access
-  writeConnectionSecretToRef:
-    name: test-oke-cluster-kubeconfig
-    namespace: default
