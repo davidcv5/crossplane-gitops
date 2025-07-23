@@ -357,7 +357,7 @@ spec:
         forProvider:
           vcnIdSelector:
             matchControllerRef: true
-          type: "ENHANCED_CLUSTER"
+          type: "BASIC_CLUSTER"
           kubernetesVersion: "v1.33.1"
           
           # Cluster endpoint configuration
@@ -369,7 +369,7 @@ spec:
           
           # Cluster pod network options
           clusterPodNetworkOptions:
-          - cniType: "OCI_VCN_IP_NATIVE"
+          - cniType: "FLANNEL_OVERLAY"
           
           # Cluster options
           options:
