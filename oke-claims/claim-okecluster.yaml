@@ -34,11 +34,8 @@ spec:
     availabilityDomain: "uocm:US-ASHBURN-AD-1" # Update for your region/AD
     # Get OKE-compatible image OCID from: oci ce node-pool-options get --node-pool-option-id all
     nodeImageId: "ocid1.image.oc1.iad.aaaaaaaaxknreyk2vq3ftndzpirs3s32s7sviagmyleugk5uu23ug7vrpyrq" # Replace with actual OKE node image OCID
-    # Reference to secret containing SSH public key
-    sshPublicKeySecretRef:
-      name: oke-ssh-keys
-      namespace: crossplane-system
-      key: ssh-public-key
+    # SSH public key for node access (replace with your actual public key)
+    sshPublicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC... your-ssh-public-key-here"
 
   # OCI region
   region: "us-ashburn-1"

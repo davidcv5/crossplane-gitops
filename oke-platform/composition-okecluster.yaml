@@ -480,16 +480,11 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.nodeImageId
       toFieldPath: spec.forProvider.nodeSourceDetails[0].imageId
-    # SSH key from secret reference
+    # SSH key - NodePool expects direct string, not secret reference
+    # For now, we'll need to pass the SSH key directly in the claim
     - type: FromCompositeFieldPath
-      fromFieldPath: spec.nodePool.sshPublicKeySecretRef.name
-      toFieldPath: spec.forProvider.sshPublicKeySecretRef.name
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.nodePool.sshPublicKeySecretRef.namespace
-      toFieldPath: spec.forProvider.sshPublicKeySecretRef.namespace
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.nodePool.sshPublicKeySecretRef.key
-      toFieldPath: spec.forProvider.sshPublicKeySecretRef.key
+      fromFieldPath: spec.nodePool.sshPublicKey
+      toFieldPath: spec.forProvider.sshPublicKey
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.kubernetesVersion
       toFieldPath: spec.forProvider.kubernetesVersion
