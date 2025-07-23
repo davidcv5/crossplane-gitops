@@ -118,12 +118,11 @@ spec:
                     description: The OCID of the image to use for worker nodes
                   sshPublicKey:
                     type: string
-                    description: SSH public key for node access
+                    description: SSH public key for node access (optional for POC)
                 required:
                 - name
                 - availabilityDomain
                 - nodeImageId
-                - sshPublicKey
               
               region:
                 type: string

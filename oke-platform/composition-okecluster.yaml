@@ -490,11 +490,13 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.nodeImageId
       toFieldPath: spec.forProvider.nodeSourceDetails[0].imageId
-    # SSH key - NodePool expects direct string, not secret reference
-    # For now, we'll need to pass the SSH key directly in the claim
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.nodePool.sshPublicKey
-      toFieldPath: spec.forProvider.sshPublicKey
+    # SSH key - Commented out for POC. For production, consider:
+    # 1. Using Crossplane functions with EnvironmentConfig
+    # 2. Creating nodes without SSH access and using kubectl exec
+    # 3. Using OCI Bastion service for secure access
+    # - type: FromCompositeFieldPath
+    #   fromFieldPath: spec.nodePool.sshPublicKey
+    #   toFieldPath: spec.forProvider.sshPublicKey
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.kubernetesVersion
       toFieldPath: spec.forProvider.kubernetesVersion
