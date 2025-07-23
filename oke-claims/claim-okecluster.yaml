@@ -19,7 +19,7 @@ spec:
   cluster:
     name: "testcluster"
     kubernetesVersion: "v1.33.1"
-    type: "ENHANCED_CLUSTER" # Enhanced cluster with full OKE features
+    type: "BASIC_CLUSTER" # Basic cluster for POC
     isPublicEndpoint: false # Private cluster endpoint (recommended)
     podsCidr: "10.244.0.0/16" # Pod networking CIDR
     servicesCidr: "10.96.0.0/16" # Service networking CIDR
