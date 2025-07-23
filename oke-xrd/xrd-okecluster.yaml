@@ -118,14 +118,28 @@ spec:
                   nodeImageId:
                     type: string
                     description: The OCID of the image to use for worker nodes
-                  sshPublicKey:
-                    type: string
-                    description: SSH public key for worker node access
+                  sshPublicKeySecretRef:
+                    type: object
+                    description: Reference to a secret containing SSH public key
+                    properties:
+                      name:
+                        type: string
+                        description: Name of the secret
+                      namespace:
+                        type: string
+                        description: Namespace of the secret
+                        default: "crossplane-system"
+                      key:
+                        type: string
+                        description: Key in the secret containing the SSH public key
+                        default: "ssh-public-key"
+                    required:
+                    - name
                 required:
                 - name
                 - availabilityDomain
                 - nodeImageId
-                - sshPublicKey
+                - sshPublicKeySecretRef
               
               region:
                 type: string

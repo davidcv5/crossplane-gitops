@@ -13,7 +13,7 @@ spec:
     path: oke-xrd
   destination:
     server: https://kubernetes.default.svc
-    namespace: crossplane-system
+    # No namespace specified - resources will use their own namespace
   syncPolicy:
     automated:
       prune: true
