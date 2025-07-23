@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: oke-xrd
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"  # This starts the deployment of XRD resources
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/davidcv5/crossplane-gitops.git
+    targetRevision: HEAD
+    path: oke-xrd
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: crossplane-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+      - RespectIgnoreDifferences=true
+      - SkipDryRunOnMissingResource=true
+      # Important: Respect the sync-wave annotations in individual resources
+      - ApplyOutOfSyncOnly=true
+  ignoreDifferences:
+    - group: apiextensions.crossplane.io
+      kind: CompositeResourceDefinition
+      jsonPointers:
+        - /status
+    - group: apiextensions.crossplane.io
+      kind: Composition
+      jsonPointers:
+        - /status
+    - group: platform.example.com
+      kind: OKECluster
+      jsonPointers:
+        - /status
+    - group: platform.example.com
+      kind: OKEClusterClaim
+      jsonPointers:
+        - /status

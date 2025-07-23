@@ -1,0 +1,46 @@
+apiVersion: platform.example.com/v1alpha1
+kind: OKEClusterClaim
+metadata:
+  name: production-oke-cluster
+  namespace: default
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+spec:
+  # OCI Compartment where resources will be created
+  compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+
+  # Network configuration
+  network:
+    name: "prod-cluster" # Name prefix for all network resources
+    vcnCidr: "10.0.0.0/16" # VCN CIDR block
+    clusterSubnetCidr: "10.0.1.0/24" # Subnet for OKE cluster endpoint
+    nodeSubnetCidr: "10.0.2.0/24" # Subnet for worker nodes
+    serviceSubnetCidr: "10.0.3.0/24" # Subnet for load balancers
+
+  # Cluster configuration
+  cluster:
+    name: "production-cluster"
+    kubernetesVersion: "v1.33.1"
+    type: "ENHANCED_CLUSTER" # Enhanced cluster with full OKE features
+    isPublicEndpoint: false # Private cluster endpoint (recommended)
+    podsCidr: "10.244.0.0/16" # Pod networking CIDR
+    servicesCidr: "10.96.0.0/16" # Service networking CIDR
+
+  # Node pool configuration
+  # nodePool:
+  #   name: "worker-nodes"
+  #   nodeShape: "VM.Standard.E4.Flex"  # Flexible compute shape
+  #   nodeCount: 3                      # Number of worker nodes
+  #   memoryInGbs: 16                   # Memory per worker node
+  #   ocpus: 2                         # OCPUs per worker node
+  #   availabilityDomain: "uocm:US-ASHBURN-AD-1"  # Update for your region/AD
+  #   # Get OKE-compatible image OCID from: oci ce node-pool-options get --node-pool-option-id all
+  #   nodeImageId: "ocid1.image.oc1.iad.aaaaaaaa..."  # Replace with actual OKE node image OCID
+  #   sshPublicKey: |
+  #     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7... your-ssh-key-here
+
+  # OCI region
+  region: "us-ashburn-1"
+
+  # Optional: Write connection secrets for kubectl access
+  writeConnectionSecretsToNamespace: default
