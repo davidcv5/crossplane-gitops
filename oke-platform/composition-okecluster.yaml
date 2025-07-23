@@ -2,16 +2,14 @@ apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
   name: okecluster
-  annotations:
-    argocd.argoproj.io/sync-wave: "4"
   labels:
     provider: oci
     service: containerengine
 spec:
   writeConnectionSecretsToNamespace: crossplane-system
   compositeTypeRef:
-    apiVersion: platform.example.com/v1alpha1
-    kind: OKECluster
+    apiVersion: oke.crossplane.io/v1alpha1
+    kind: Cluster
   
   resources:
   # VCN (Virtual Cloud Network)
@@ -482,9 +480,16 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.nodeImageId
       toFieldPath: spec.forProvider.nodeSourceDetails[0].imageId
+    # SSH key from secret reference
     - type: FromCompositeFieldPath
-      fromFieldPath: spec.nodePool.sshPublicKey
-      toFieldPath: spec.forProvider.sshPublicKey
+      fromFieldPath: spec.nodePool.sshPublicKeySecretRef.name
+      toFieldPath: spec.forProvider.sshPublicKeySecretRef.name
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.nodePool.sshPublicKeySecretRef.namespace
+      toFieldPath: spec.forProvider.sshPublicKeySecretRef.namespace
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.nodePool.sshPublicKeySecretRef.key
+      toFieldPath: spec.forProvider.sshPublicKeySecretRef.key
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.kubernetesVersion
       toFieldPath: spec.forProvider.kubernetesVersion

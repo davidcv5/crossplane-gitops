@@ -1,17 +1,15 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: okeclusters.platform.example.com
-  annotations:
-    argocd.argoproj.io/sync-wave: "3"
+  name: clusters.oke.crossplane.io
 spec:
-  group: platform.example.com
+  group: oke.crossplane.io
   names:
-    kind: OKECluster
-    plural: okeclusters
+    kind: Cluster
+    plural: clusters
   claimNames:
-    kind: OKEClusterClaim
-    plural: okeclusterclaims
+    kind: ClusterClaim
+    plural: clusterclaims
   versions:
   - name: v1alpha1
     served: true

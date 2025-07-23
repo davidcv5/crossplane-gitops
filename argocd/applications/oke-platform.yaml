@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: oke-xrd
+  name: oke-platform
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "3"  # This starts the deployment of XRD resources
+    argocd.argoproj.io/sync-wave: "3"  # Deploy platform components first
 spec:
   project: default
   source:
     repoURL: https://github.com/davidcv5/crossplane-gitops.git
     targetRevision: HEAD
-    path: oke-xrd
+    path: oke-platform
   destination:
     server: https://kubernetes.default.svc
     # No namespace specified - resources will use their own namespace
@@ -35,11 +35,7 @@ spec:
       kind: Composition
       jsonPointers:
         - /status
-    - group: platform.example.com
-      kind: OKECluster
-      jsonPointers:
-        - /status
-    - group: platform.example.com
-      kind: OKEClusterClaim
+    - group: oke.crossplane.io
+      kind: Cluster
       jsonPointers:
         - /status

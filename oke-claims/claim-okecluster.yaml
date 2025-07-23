@@ -1,17 +1,15 @@
-apiVersion: platform.example.com/v1alpha1
-kind: OKEClusterClaim
+apiVersion: oke.crossplane.io/v1alpha1
+kind: ClusterClaim
 metadata:
-  name: production-oke-cluster
-  namespace: default
-  annotations:
-    argocd.argoproj.io/sync-wave: "5"
+  name: test-oke-cluster
+  # ArgoCD will deploy to default namespace as specified in the app
 spec:
   # OCI Compartment where resources will be created
   compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
 
   # Network configuration
   network:
-    name: "prod-cluster" # Name prefix for all network resources
+    name: "test" # Name prefix for all network resources (no hyphens for DNS labels)
     vcnCidr: "10.0.0.0/16" # VCN CIDR block
     clusterSubnetCidr: "10.0.1.0/24" # Subnet for OKE cluster endpoint
     nodeSubnetCidr: "10.0.2.0/24" # Subnet for worker nodes
@@ -19,7 +17,7 @@ spec:
 
   # Cluster configuration
   cluster:
-    name: "production-cluster"
+    name: "testcluster"
     kubernetesVersion: "v1.33.1"
     type: "ENHANCED_CLUSTER" # Enhanced cluster with full OKE features
     isPublicEndpoint: false # Private cluster endpoint (recommended)
@@ -28,7 +26,7 @@ spec:
 
   # Node pool configuration
   nodePool:
-    name: "worker-nodes"
+    name: "workernodes"
     nodeShape: "VM.Standard.E4.Flex" # Flexible compute shape
     nodeCount: 1 # Number of worker nodes (minimal for POC)
     memoryInGbs: 16 # Memory per worker node
