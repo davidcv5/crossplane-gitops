@@ -309,6 +309,10 @@ spec:
       - type: string
         string:
           fmt: "%s-node-subnet"
+    # Capture the node subnet ID in XR status
+    - type: ToCompositeFieldPath
+      fromFieldPath: status.atProvider.id
+      toFieldPath: status.nodeSubnetId
 
   # Service/LB Subnet (Private)
   - name: service-subnet
@@ -444,13 +448,11 @@ spec:
           - memoryInGbs: 16
             ocpus: 2
           nodeConfigDetails:
-          - size: 3
+          - size: 1  # Start with 1 node
             placementConfigs:
             - availabilityDomain: ""  # Will be patched
-              subnetIdSelector:
-                matchControllerRef: true
-                matchLabels:
-                  type: nodes
+              # Try without selector to see if structure is preserved
+              subnetId: ""  # Will need to be patched
           nodeSourceDetails:
           - sourceType: "IMAGE"
             imageId: ""  # Will be patched
@@ -479,6 +481,12 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.availabilityDomain
       toFieldPath: spec.forProvider.nodeConfigDetails[0].placementConfigs[0].availabilityDomain
+    # Patch the node subnet ID from XR status
+    - type: FromCompositeFieldPath
+      fromFieldPath: status.nodeSubnetId
+      toFieldPath: spec.forProvider.nodeConfigDetails[0].placementConfigs[0].subnetId
+      policy:
+        fromFieldPath: Required
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.nodeImageId
       toFieldPath: spec.forProvider.nodeSourceDetails[0].imageId
@@ -495,3 +503,9 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: status.atProvider.id
       toFieldPath: status.nodePoolId
+    
+    # Add readiness check to ensure subnet is ready before creating NodePool
+    readinessChecks:
+    - type: MatchString
+      fieldPath: status.nodeSubnetId
+      matchString: "ocid1.subnet"

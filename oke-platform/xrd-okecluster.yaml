@@ -157,6 +157,9 @@ spec:
               nodePoolId:
                 description: Node Pool OCID
                 type: string
+              nodeSubnetId:
+                description: Node Subnet OCID
+                type: string
               kubeconfigCommand:
                 description: Command to generate kubeconfig
                 type: string
