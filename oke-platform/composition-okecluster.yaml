@@ -448,6 +448,7 @@ spec:
             placementConfigs:
             - availabilityDomain: ""  # Will be patched
               subnetIdSelector:
+                matchControllerRef: true
                 matchLabels:
                   type: nodes
           nodeSourceDetails:
