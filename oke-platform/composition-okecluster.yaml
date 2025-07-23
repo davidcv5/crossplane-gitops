@@ -439,19 +439,20 @@ spec:
           clusterIdSelector:
             matchControllerRef: true
           nodeShape: "VM.Standard.E4.Flex"
+          # Initialize structures that will be patched
           nodeShapeConfig:
           - memoryInGbs: 16
             ocpus: 2
-          
           nodeConfigDetails:
           - size: 3
             placementConfigs:
-            - subnetIdSelector:
+            - availabilityDomain: ""  # Will be patched
+              subnetIdSelector:
                 matchLabels:
                   type: nodes
-          
           nodeSourceDetails:
           - sourceType: "IMAGE"
+            imageId: ""  # Will be patched
           
         providerConfigRef:
           name: default
