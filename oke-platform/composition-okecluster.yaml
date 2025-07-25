@@ -363,8 +363,7 @@ spec:
       kind: Cluster
       spec:
         forProvider:
-          vcnIdSelector:
-            matchControllerRef: true
+          vcnId: ""  # Will be patched from composite status
           type: "BASIC_CLUSTER"
           kubernetesVersion: "v1.33.1"
           
@@ -397,6 +396,9 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.compartmentId
       toFieldPath: spec.forProvider.compartmentId
+    - type: FromCompositeFieldPath
+      fromFieldPath: status.vcnId
+      toFieldPath: spec.forProvider.vcnId
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.name
       toFieldPath: spec.forProvider.name
