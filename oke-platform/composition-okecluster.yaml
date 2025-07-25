@@ -208,6 +208,21 @@ spec:
             tcpOptions:
             - min: 6443
               max: 6443
+          
+          # Allow node-to-node communication (kubelet)
+          - description: "Allow node-to-node communication"
+            protocol: "6"
+            source: "10.0.0.0/16"
+            stateless: false
+            tcpOptions:
+            - min: 10250
+              max: 10250
+          
+          # Allow pod-to-pod communication
+          - description: "Allow pod-to-pod communication"
+            protocol: "all"
+            source: "10.244.0.0/16"
+            stateless: false
               
           # Egress rules
           egressSecurityRules:
