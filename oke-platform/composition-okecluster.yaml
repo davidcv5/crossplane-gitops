@@ -271,6 +271,10 @@ spec:
       - type: string
         string:
           fmt: "%s-cluster-subnet"
+    # Export cluster subnet ID to composite status
+    - type: ToCompositeFieldPath
+      fromFieldPath: status.atProvider.id
+      toFieldPath: status.clusterSubnetId
 
   # Node Subnet (Private)
   - name: node-subnet
@@ -367,9 +371,7 @@ spec:
           # Cluster endpoint configuration
           endpointConfig:
           - isPublicIpEnabled: false
-            subnetIdSelector:
-              matchLabels:
-                type: cluster
+            subnetId: ""  # Will be patched from composite status
           
           # Cluster pod network options
           clusterPodNetworkOptions:
@@ -407,6 +409,9 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.isPublicEndpoint
       toFieldPath: spec.forProvider.endpointConfig[0].isPublicIpEnabled
+    - type: FromCompositeFieldPath
+      fromFieldPath: status.clusterSubnetId
+      toFieldPath: spec.forProvider.endpointConfig[0].subnetId
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.podsCidr
       toFieldPath: spec.forProvider.options[0].kubernetesNetworkConfig[0].podsCidr
