@@ -237,6 +237,8 @@ spec:
   # Cluster Subnet (Private)
   - name: cluster-subnet
     base:
+      dependsOn:
+      - name: vcn
       apiVersion: core.oci.upbound.io/v1alpha1
       kind: Subnet
       metadata:
@@ -359,6 +361,9 @@ spec:
   # OKE Cluster
   - name: oke-cluster
     base:
+      dependsOn:
+      - name: vcn
+      - name: cluster-subnet
       apiVersion: containerengine.oci.upbound.io/v1alpha1
       kind: Cluster
       spec:
