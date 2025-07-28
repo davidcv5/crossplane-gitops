@@ -39,6 +39,10 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: status.atProvider.id
       toFieldPath: status.vcnId
+    # Add freeform tags
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.freeformTags
+      toFieldPath: spec.forProvider.freeformTags
 
   # Internet Gateway
   - name: internet-gateway
@@ -70,6 +74,10 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: status.atProvider.id
       toFieldPath: status.internetGatewayId
+    # Add freeform tags
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.freeformTags
+      toFieldPath: spec.forProvider.freeformTags
 
   # NAT Gateway
   - name: nat-gateway
@@ -101,6 +109,10 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: status.atProvider.id
       toFieldPath: status.natGatewayId
+    # Add freeform tags
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.freeformTags
+      toFieldPath: spec.forProvider.freeformTags
 
   # Public Route Table
   - name: public-route-table
@@ -440,6 +452,10 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.servicesCidr
       toFieldPath: spec.forProvider.options[0].kubernetesNetworkConfig[0].servicesCidr
+    # Add freeform tags to cluster
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.freeformTags
+      toFieldPath: spec.forProvider.freeformTags
     
     # Map cluster information to status
     - type: ToCompositeFieldPath

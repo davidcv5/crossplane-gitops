@@ -39,3 +39,11 @@ spec:
 
   # OCI region
   region: "us-ashburn-1"
+
+  # Freeform tags for resource organization
+  freeformTags:
+    environment: "development"
+    project: "crossplane-oci"
+    managed-by: "crossplane"
+    team: "providers"
+    cost-center: "oke-infra"

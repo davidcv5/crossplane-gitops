@@ -128,6 +128,12 @@ spec:
                 type: string
                 description: OCI region for the deployment
                 default: "us-ashburn-1"
+              
+              freeformTags:
+                type: object
+                description: Freeform tags to apply to the cluster
+                additionalProperties:
+                  type: string
                 
             required:
             - compartmentId
