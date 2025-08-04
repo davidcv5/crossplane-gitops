@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane-provider-family-oci
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io/background
+spec:
+  project: crossplane
+  source:
+    repoURL: https://github.com/davidcru/crossplane-gitops
+    targetRevision: sub-package
+    path: crossplane/providers/oci-sub-packages/family
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: crossplane-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+  revisionHistoryLimit: 10
