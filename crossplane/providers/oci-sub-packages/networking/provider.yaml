@@ -2,6 +2,8 @@ apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
   name: provider-oci-networking
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   package: iad.ocir.io/iddevjmhjw0n/provider-oci-networking:v0.1.0-test-arm64
   packagePullPolicy: IfNotPresent
