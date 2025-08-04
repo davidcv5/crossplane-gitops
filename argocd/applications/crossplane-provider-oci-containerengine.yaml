@@ -6,7 +6,7 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io/background
 spec:
-  project: crossplane
+  project: default
   source:
     repoURL: https://github.com/davidcru/crossplane-gitops
     targetRevision: sub-package
