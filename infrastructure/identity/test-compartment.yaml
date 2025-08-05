@@ -1,4 +1,4 @@
-apiVersion: identity.oci.upbound.io/v1beta1
+apiVersion: identity.oci.upbound.io/v1alpha1
 kind: Compartment
 metadata:
   name: test-compartment
