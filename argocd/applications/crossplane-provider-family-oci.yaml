@@ -18,8 +18,14 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    managedNamespaceMetadata:
+      labels:
+        argocd.argoproj.io/managed-by: argocd
     syncOptions:
     - CreateNamespace=true
+    - RespectIgnoreDifferences=true
+    - ApplyOutOfSyncOnly=true
+    - Validate=false
     retry:
       limit: 5
       backoff:
