@@ -1,0 +1,13 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-oci-identity
+spec:
+  package: iad.ocir.io/iddevjmhjw0n/provider-oci-identity:v0.0.5-test
+  # packagePullSecrets:
+  # - name: ocir-secret
+  packagePullPolicy: IfNotPresent
+  revisionActivationPolicy: Automatic
+  revisionHistoryLimit: 1
+  # This provider depends on the family provider
+  skipDependencyResolution: false

@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- family/
+
+# Common labels for base providers
+commonLabels:
+  app.kubernetes.io/part-of: provider-family-oci
+  app.kubernetes.io/component: base
+  app.kubernetes.io/managed-by: argocd
+
+# Add sync-wave annotation for proper ordering
+commonAnnotations:
+  argocd.argoproj.io/sync-wave: "10"

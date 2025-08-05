@@ -1,0 +1,13 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-oci-containerengine
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  package: iad.ocir.io/iddevjmhjw0n/provider-oci-containerengine:v0.0.5-test
+  packagePullPolicy: IfNotPresent
+  revisionActivationPolicy: Automatic
+  revisionHistoryLimit: 1
+  # This provider depends on the family provider
+  skipDependencyResolution: false
