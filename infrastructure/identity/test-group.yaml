@@ -1,0 +1,11 @@
+apiVersion: identity.oci.upbound.io/v1alpha1
+kind: Group
+metadata:
+  name: test-crossplane-group
+spec:
+  forProvider:
+    description: "Test group created by Crossplane"
+    name: "test-crossplane-group"
+    # Groups are created at the tenancy level, no compartmentId needed
+  providerConfigRef:
+    name: default
