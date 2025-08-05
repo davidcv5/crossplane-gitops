@@ -1,0 +1,12 @@
+apiVersion: identity.oci.upbound.io/v1beta1
+kind: Compartment
+metadata:
+  name: test-compartment
+spec:
+  forProvider:
+    description: "Test compartment created by Crossplane"
+    name: "test-compartment"
+    # Parent compartment - using the same compartment from examples
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+  providerConfigRef:
+    name: default
