@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "3"
 spec:
-  package: iad.ocir.io/iddevjmhjw0n/provider-oci-containerengine:v0.1.0-test-arm64
+  package: iad.ocir.io/iddevjmhjw0n/provider-oci-containerengine:v0.1.0-tf-7.12.0
   packagePullPolicy: IfNotPresent
   revisionActivationPolicy: Automatic
   revisionHistoryLimit: 1
