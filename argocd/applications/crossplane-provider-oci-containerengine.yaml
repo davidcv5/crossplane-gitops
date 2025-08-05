@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/davidcru/crossplane-gitops
+    repoURL: https://github.com/davidcv5/crossplane-gitops
     targetRevision: sub-package
     path: crossplane/providers/oci-sub-packages/containerengine
   destination:
