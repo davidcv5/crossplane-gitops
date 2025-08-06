@@ -378,12 +378,12 @@ spec:
           # Cluster options
           options:
             addOns:
-            - isKubernetesDashboardEnabled: false
+              isKubernetesDashboardEnabled: false
               isTillerEnabled: false
             admissionControllerOptions:
-            - isPodSecurityPolicyEnabled: false
+              isPodSecurityPolicyEnabled: false
             kubernetesNetworkConfig:
-            - podsCidr: "10.244.0.0/16"
+              podsCidr: "10.244.0.0/16"
               servicesCidr: "10.96.0.0/16"
             serviceLbSubnetIdsSelector:
               matchLabels:
