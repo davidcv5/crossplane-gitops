@@ -197,7 +197,7 @@ spec:
             source: "0.0.0.0/0"
             stateless: false
             tcpOptions:
-            - min: 22
+              min: 22
               max: 22
           
           # Allow Kubernetes API access
@@ -206,7 +206,7 @@ spec:
             source: "0.0.0.0/0"
             stateless: false
             tcpOptions:
-            - min: 6443
+              min: 6443
               max: 6443
               
           # Egress rules
