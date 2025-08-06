@@ -373,7 +373,7 @@ spec:
           
           # Cluster pod network options
           clusterPodNetworkOptions:
-          - cniType: "FLANNEL_OVERLAY"
+            cniType: "FLANNEL_OVERLAY"
           
           # Cluster options
           options:
@@ -445,7 +445,7 @@ spec:
           nodeShape: "VM.Standard.E4.Flex"
           # Initialize structures that will be patched
           nodeShapeConfig:
-          - memoryInGbs: 16
+            memoryInGbs: 16
             ocpus: 2
           nodeConfigDetails:
             size: 1  # Start with 1 node
