@@ -448,13 +448,13 @@ spec:
           - memoryInGbs: 16
             ocpus: 2
           nodeConfigDetails:
-          - size: 1  # Start with 1 node
+            size: 1  # Start with 1 node
             placementConfigs:
             - availabilityDomain: ""  # Will be patched
               # Try without selector to see if structure is preserved
               subnetId: ""  # Will need to be patched
           nodeSourceDetails:
-          - sourceType: "IMAGE"
+            sourceType: "IMAGE"
             imageId: ""  # Will be patched
           
         providerConfigRef:
@@ -489,7 +489,7 @@ spec:
         fromFieldPath: Required
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.nodeImageId
-      toFieldPath: spec.forProvider.nodeSourceDetails[0].imageId
+      toFieldPath: spec.forProvider.nodeSourceDetails.imageId
     # SSH key - Commented out for POC. For production, consider:
     # 1. Using Crossplane functions with EnvironmentConfig
     # 2. Creating nodes without SSH access and using kubectl exec
