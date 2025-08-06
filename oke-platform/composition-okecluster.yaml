@@ -75,7 +75,7 @@ spec:
   - name: nat-gateway
     base:
       apiVersion: networking.oci.upbound.io/v1alpha1
-      kind: NATGateway
+      kind: NatGateway
       metadata:
         labels:
           crossplane.io/name: nat-gateway
