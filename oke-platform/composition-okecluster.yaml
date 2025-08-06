@@ -409,10 +409,10 @@ spec:
       toFieldPath: spec.forProvider.endpointConfig.isPublicIpEnabled
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.podsCidr
-      toFieldPath: spec.forProvider.options.kubernetesNetworkConfig[0].podsCidr
+      toFieldPath: spec.forProvider.options.kubernetesNetworkConfig.podsCidr
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.servicesCidr
-      toFieldPath: spec.forProvider.options.kubernetesNetworkConfig[0].servicesCidr
+      toFieldPath: spec.forProvider.options.kubernetesNetworkConfig.servicesCidr
     
     # Map cluster information to status
     - type: ToCompositeFieldPath
@@ -471,20 +471,20 @@ spec:
       toFieldPath: spec.forProvider.nodeShape
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.memoryInGbs
-      toFieldPath: spec.forProvider.nodeShapeConfig[0].memoryInGbs
+      toFieldPath: spec.forProvider.nodeShapeConfig.memoryInGbs
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.ocpus
-      toFieldPath: spec.forProvider.nodeShapeConfig[0].ocpus
+      toFieldPath: spec.forProvider.nodeShapeConfig.ocpus
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.nodeCount
-      toFieldPath: spec.forProvider.nodeConfigDetails[0].size
+      toFieldPath: spec.forProvider.nodeConfigDetails.size
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.availabilityDomain
-      toFieldPath: spec.forProvider.nodeConfigDetails[0].placementConfigs[0].availabilityDomain
+      toFieldPath: spec.forProvider.nodeConfigDetails.placementConfigs[0].availabilityDomain
     # Patch the node subnet ID from XR status
     - type: FromCompositeFieldPath
       fromFieldPath: status.nodeSubnetId
-      toFieldPath: spec.forProvider.nodeConfigDetails[0].placementConfigs[0].subnetId
+      toFieldPath: spec.forProvider.nodeConfigDetails.placementConfigs[0].subnetId
       policy:
         fromFieldPath: Required
     - type: FromCompositeFieldPath
