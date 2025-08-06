@@ -373,7 +373,7 @@ spec:
           
           # Cluster pod network options
           clusterPodNetworkOptions:
-            cniType: "FLANNEL_OVERLAY"
+          - cniType: "FLANNEL_OVERLAY"
           
           # Cluster options
           options:
