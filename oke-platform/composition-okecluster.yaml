@@ -197,7 +197,7 @@ spec:
             source: "0.0.0.0/0"
             stateless: false
             tcpOptions:
-              min: 22
+            - min: 22
               max: 22
           
           # Allow Kubernetes API access
@@ -206,7 +206,7 @@ spec:
             source: "0.0.0.0/0"
             stateless: false
             tcpOptions:
-              min: 6443
+            - min: 6443
               max: 6443
               
           # Egress rules
@@ -366,7 +366,7 @@ spec:
           
           # Cluster endpoint configuration
           endpointConfig:
-            isPublicIpEnabled: false
+          - isPublicIpEnabled: false
             subnetIdSelector:
               matchLabels:
                 type: cluster
@@ -377,13 +377,13 @@ spec:
           
           # Cluster options
           options:
-            addOns:
-              isKubernetesDashboardEnabled: false
+          - addOns:
+            - isKubernetesDashboardEnabled: false
               isTillerEnabled: false
             admissionControllerOptions:
-              isPodSecurityPolicyEnabled: false
+            - isPodSecurityPolicyEnabled: false
             kubernetesNetworkConfig:
-              podsCidr: "10.244.0.0/16"
+            - podsCidr: "10.244.0.0/16"
               servicesCidr: "10.96.0.0/16"
             serviceLbSubnetIdSelector:
               matchLabels:
@@ -445,16 +445,16 @@ spec:
           nodeShape: "VM.Standard.E4.Flex"
           # Initialize structures that will be patched
           nodeShapeConfig:
-            memoryInGbs: 16
+          - memoryInGbs: 16
             ocpus: 2
           nodeConfigDetails:
-            size: 1  # Start with 1 node
+          - size: 1  # Start with 1 node
             placementConfigs:
             - availabilityDomain: ""  # Will be patched
               # Try without selector to see if structure is preserved
               subnetId: ""  # Will need to be patched
           nodeSourceDetails:
-            sourceType: "IMAGE"
+          - sourceType: "IMAGE"
             imageId: ""  # Will be patched
           
         providerConfigRef:
