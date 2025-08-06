@@ -4,29 +4,36 @@ metadata:
   name: oke-claims
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "4"  # Deploy claims after platform
+    argocd.argoproj.io/sync-wave: "30"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io/foreground
 spec:
   project: default
   source:
-    repoURL: https://github.com/davidcv5/crossplane-gitops.git
-    targetRevision: HEAD
+    repoURL: https://github.com/davidcv5/crossplane-gitops
+    targetRevision: sub-package
     path: oke-claims
   destination:
     server: https://kubernetes.default.svc
-    namespace: default  # Claims go to default namespace
+    namespace: default
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
-      - PrunePropagationPolicy=foreground
-      - PruneLast=true
-      - RespectIgnoreDifferences=true
-      # Important: Skip validation if CRD might not exist yet
-      - SkipDryRunOnMissingResource=true
+    - CreateNamespace=true
+    - RespectIgnoreDifferences=true
+    - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+  revisionHistoryLimit: 10
+  # Ensure platform is ready before syncing claims
   ignoreDifferences:
-    - group: oke.crossplane.io
-      kind: ClusterClaim
-      jsonPointers:
-        - /status
+  - group: oke.crossplane.io
+    kind: ClusterClaim
+    jsonPointers:
+    - /status
