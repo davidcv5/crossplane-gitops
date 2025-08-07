@@ -406,13 +406,13 @@ spec:
       toFieldPath: spec.forProvider.type
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.isPublicEndpoint
-      toFieldPath: spec.forProvider.endpointConfig.isPublicIpEnabled
+      toFieldPath: spec.forProvider.endpointConfig[0].isPublicIpEnabled
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.podsCidr
-      toFieldPath: spec.forProvider.options.kubernetesNetworkConfig.podsCidr
+      toFieldPath: spec.forProvider.options[0].kubernetesNetworkConfig[0].podsCidr
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.servicesCidr
-      toFieldPath: spec.forProvider.options.kubernetesNetworkConfig.servicesCidr
+      toFieldPath: spec.forProvider.options[0].kubernetesNetworkConfig[0].servicesCidr
     
     # Map cluster information to status
     - type: ToCompositeFieldPath
@@ -471,25 +471,25 @@ spec:
       toFieldPath: spec.forProvider.nodeShape
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.memoryInGbs
-      toFieldPath: spec.forProvider.nodeShapeConfig.memoryInGbs
+      toFieldPath: spec.forProvider.nodeShapeConfig[0].memoryInGbs
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.ocpus
-      toFieldPath: spec.forProvider.nodeShapeConfig.ocpus
+      toFieldPath: spec.forProvider.nodeShapeConfig[0].ocpus
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.nodeCount
-      toFieldPath: spec.forProvider.nodeConfigDetails.size
+      toFieldPath: spec.forProvider.nodeConfigDetails[0].size
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.availabilityDomain
-      toFieldPath: spec.forProvider.nodeConfigDetails.placementConfigs[0].availabilityDomain
+      toFieldPath: spec.forProvider.nodeConfigDetails[0].placementConfigs[0].availabilityDomain
     # Patch the node subnet ID from XR status
     - type: FromCompositeFieldPath
       fromFieldPath: status.nodeSubnetId
-      toFieldPath: spec.forProvider.nodeConfigDetails.placementConfigs[0].subnetId
+      toFieldPath: spec.forProvider.nodeConfigDetails[0].placementConfigs[0].subnetId
       policy:
         fromFieldPath: Required
     - type: FromCompositeFieldPath
       fromFieldPath: spec.nodePool.nodeImageId
-      toFieldPath: spec.forProvider.nodeSourceDetails.imageId
+      toFieldPath: spec.forProvider.nodeSourceDetails[0].imageId
     # SSH key - Commented out for POC. For production, consider:
     # 1. Using Crossplane functions with EnvironmentConfig
     # 2. Creating nodes without SSH access and using kubectl exec
