@@ -359,8 +359,8 @@ spec:
       kind: Cluster
       spec:
         forProvider:
-          vcnIdRef:
-            name: vcn
+          vcnIdSelector:
+            matchControllerRef: true
           type: "BASIC_CLUSTER"
           kubernetesVersion: "v1.33.1"
           
