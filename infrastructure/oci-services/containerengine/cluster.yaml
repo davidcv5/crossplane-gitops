@@ -13,14 +13,32 @@ spec:
     vcnIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test-vcn
+    type: "BASIC_CLUSTER"
     kubernetesVersion: "v1.33.1"
+    
+    # Cluster endpoint configuration
+    endpointConfig:
+    - isPublicIpEnabled: true
+      subnetIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test-subnet
+    
+    # Cluster pod network options
+    clusterPodNetworkOptions:
+    - cniType: "FLANNEL_OVERLAY"
+    
+    # Cluster options
     options:
-      - addOns:
-          - isKubernetesDashboardEnabled: false
-            isOciLogAnalyticsEnabled: false
-            isTillerEnabled: false
-        kubernetesNetworkConfig:
-          - podsCidr: "10.244.0.0/16"
-            servicesCidr: "10.96.0.0/16"
+    - addOns:
+      - isKubernetesDashboardEnabled: false
+        isTillerEnabled: false
+      admissionControllerOptions:
+      - isPodSecurityPolicyEnabled: false
+      kubernetesNetworkConfig:
+      - podsCidr: "10.244.0.0/16"
+        servicesCidr: "10.96.0.0/16"
+      serviceLbSubnetIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test-subnet
   providerConfigRef:
     name: default
