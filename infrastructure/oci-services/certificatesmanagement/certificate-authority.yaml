@@ -18,12 +18,5 @@ spec:
             country: "US"
             stateOrProvinceName: "California"
             localityName: "San Francisco"
-    certificateRevocationListDetails:
-      - objectStorageConfig:
-          - objectStorageBucketName: "test-crl-bucket"
-            objectStorageNamespace: "idwsb3nvxazj"  # Replace with your namespace
-            objectStorageObjectNameFormat: "crl-v{}.crl"
-        customFormattedUrls:
-          - "http://crl.example.com/test-ca.crl"
   providerConfigRef:
     name: default
