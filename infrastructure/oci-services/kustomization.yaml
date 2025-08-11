@@ -7,4 +7,4 @@ resources:
   - containerengine
   - loadbalancer
   - networkloadbalancer
-  # - certificatesmanagement
+  - certificatesmanagement
