@@ -1,0 +1,13 @@
+apiVersion: kms.oci.upbound.io/v1alpha1
+kind: Vault
+metadata:
+  name: certificate-vault
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"  # Create before KMS key
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    displayName: "Certificate Authority Vault"
+    vaultType: "DEFAULT"
+  providerConfigRef:
+    name: default

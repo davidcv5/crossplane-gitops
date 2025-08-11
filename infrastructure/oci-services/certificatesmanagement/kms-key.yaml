@@ -1,0 +1,17 @@
+apiVersion: kms.oci.upbound.io/v1alpha1
+kind: Key
+metadata:
+  name: certificate-authority-key
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"  # Create after vault, before certificate authority
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    displayName: "Certificate Authority Key"
+    keyShape:
+      - algorithm: "AES"
+        length: 32
+    vaultIdRef:
+      name: certificate-vault
+  providerConfigRef:
+    name: default
