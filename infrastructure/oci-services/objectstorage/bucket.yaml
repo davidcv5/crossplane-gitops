@@ -10,6 +10,6 @@ spec:
     name: crossplane-test-bucket-01
     namespace: idwsb3nvxazj # Replace with your OCI tenancy namespace
     storageTier: Standard
-    publicAccessType: NoPublicAccess
+    accessType: NoPublicAccess
   providerConfigRef:
     name: default
