@@ -1,0 +1,32 @@
+apiVersion: networking.oci.upbound.io/v1alpha1
+kind: SecurityList
+metadata:
+  name: test-security-list
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    displayName: test-security-list
+    vcnIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test-vcn
+    egressSecurityRules:
+      - destination: "0.0.0.0/0"
+        protocol: "all"
+        description: "Allow all outbound traffic"
+    ingressSecurityRules:
+      - source: "0.0.0.0/0"
+        protocol: "6"  # TCP
+        description: "Allow SSH"
+        tcpOptions:
+          - min: 22
+            max: 22
+      - source: "0.0.0.0/0"
+        protocol: "6"  # TCP
+        description: "Allow HTTPS"
+        tcpOptions:
+          - min: 443
+            max: 443
+  providerConfigRef:
+    name: default

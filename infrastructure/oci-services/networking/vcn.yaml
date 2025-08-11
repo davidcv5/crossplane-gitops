@@ -1,0 +1,16 @@
+apiVersion: networking.oci.upbound.io/v1alpha1
+kind: Vcn
+metadata:
+  name: test-vcn
+  labels:
+    testing.upbound.io/example-name: test-vcn
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    displayName: test-vcn
+    cidrBlock: "10.0.0.0/16"
+    dnsLabel: testvcn
+  providerConfigRef:
+    name: default

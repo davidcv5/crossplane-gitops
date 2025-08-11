@@ -1,0 +1,20 @@
+apiVersion: loadbalancer.oci.upbound.io/v1alpha1
+kind: LoadBalancer
+metadata:
+  name: test-load-balancer
+  labels:
+    testing.upbound.io/example-name: test-load-balancer
+  annotations:
+    argocd.argoproj.io/sync-wave: "7"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    displayName: test-load-balancer
+    shape: flexible
+    shapeDetails:
+      - minimumBandwidthInMbps: 10
+        maximumBandwidthInMbps: 100
+    subnetIdsRefs:
+      - name: test-subnet
+  providerConfigRef:
+    name: default

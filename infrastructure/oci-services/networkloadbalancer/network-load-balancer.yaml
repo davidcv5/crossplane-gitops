@@ -1,0 +1,18 @@
+apiVersion: networkloadbalancer.oci.upbound.io/v1alpha1
+kind: NetworkLoadBalancer
+metadata:
+  name: test-network-load-balancer
+  labels:
+    testing.upbound.io/example-name: test-network-load-balancer
+  annotations:
+    argocd.argoproj.io/sync-wave: "7"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    displayName: test-network-load-balancer
+    subnetIdRef:
+      name: test-subnet
+    isPrivate: false
+    isPreserveSourceDestination: false
+  providerConfigRef:
+    name: default

@@ -1,0 +1,15 @@
+apiVersion: networking.oci.upbound.io/v1alpha1
+kind: NetworkSecurityGroup
+metadata:
+  name: test-nsg
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    displayName: test-nsg
+    vcnIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test-vcn
+  providerConfigRef:
+    name: default

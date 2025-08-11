@@ -1,0 +1,20 @@
+apiVersion: networkloadbalancer.oci.upbound.io/v1alpha1
+kind: BackendSet
+metadata:
+  name: test-nlb-backend-set
+  annotations:
+    argocd.argoproj.io/sync-wave: "8"
+spec:
+  forProvider:
+    networkLoadBalancerIdRef:
+      name: test-network-load-balancer
+    name: test-nlb-backend-set
+    policy: ROUND_ROBIN
+    healthChecker:
+      - protocol: TCP
+        port: 80
+        intervalInMillis: 10000
+        timeoutInMillis: 3000
+        retries: 3
+  providerConfigRef:
+    name: default

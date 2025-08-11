@@ -1,11 +1,11 @@
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
-  name: provider-oci-containerengine
+  name: provider-oci-networkloadbalancer
   annotations:
     argocd.argoproj.io/sync-wave: "3"
 spec:
-  package: iad.ocir.io/iddevjmhjw0n/provider-oci-containerengine:v0.0.10-test
+  package: iad.ocir.io/iddevjmhjw0n/provider-oci-networkloadbalancer:v0.0.10-test
   packagePullPolicy: IfNotPresent
   revisionActivationPolicy: Automatic
   revisionHistoryLimit: 1

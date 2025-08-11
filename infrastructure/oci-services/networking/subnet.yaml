@@ -1,0 +1,19 @@
+apiVersion: networking.oci.upbound.io/v1alpha1
+kind: Subnet
+metadata:
+  name: test-subnet
+  labels:
+    testing.upbound.io/example-name: test-subnet
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    displayName: test-subnet
+    cidrBlock: "10.0.1.0/24"
+    vcnIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test-vcn
+    dnsLabel: testsubnet
+  providerConfigRef:
+    name: default

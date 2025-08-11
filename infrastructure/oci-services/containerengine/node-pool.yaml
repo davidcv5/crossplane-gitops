@@ -1,0 +1,29 @@
+apiVersion: containerengine.oci.upbound.io/v1alpha1
+kind: NodePool
+metadata:
+  name: test-node-pool
+  annotations:
+    argocd.argoproj.io/sync-wave: "8"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    name: test-node-pool
+    clusterIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test-oke-cluster
+    nodeShape: VM.Standard.E4.Flex
+    nodeShapeConfig:
+      - memory: 16
+        ocpus: 1
+    nodeConfigDetails:
+      - size: 2
+        placementConfigs:
+          - availabilityDomain: "KTWu:US-ASHBURN-AD-1"
+            subnetIdSelector:
+              matchLabels:
+                testing.upbound.io/example-name: test-subnet
+    nodeSourceDetails:
+      - imageId: "ocid1.image.oc1.iad.aaaaaaaagj4j3vtqhfgjqbmftiqpa6jxhpelhxn4otvnsvbjrclqvkwd3xaq"  # Oracle Linux 7.9
+        sourceType: "IMAGE"
+  providerConfigRef:
+    name: default

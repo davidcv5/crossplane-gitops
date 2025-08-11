@@ -1,0 +1,26 @@
+apiVersion: containerengine.oci.upbound.io/v1alpha1
+kind: Cluster
+metadata:
+  name: test-oke-cluster
+  labels:
+    testing.upbound.io/example-name: test-oke-cluster
+  annotations:
+    argocd.argoproj.io/sync-wave: "7"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    name: test-oke-cluster
+    vcnIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test-vcn
+    kubernetesVersion: "v1.28.2"
+    options:
+      - addOns:
+          - isKubernetesDashboardEnabled: false
+            isOciLogAnalyticsEnabled: false
+            isTillerEnabled: false
+        kubernetesNetworkConfig:
+          - podsCidr: "10.244.0.0/16"
+            servicesCidr: "10.96.0.0/16"
+  providerConfigRef:
+    name: default

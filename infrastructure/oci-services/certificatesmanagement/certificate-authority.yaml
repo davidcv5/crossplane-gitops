@@ -1,0 +1,29 @@
+apiVersion: certificatesmanagement.oci.upbound.io/v1alpha1
+kind: CertificateAuthority
+metadata:
+  name: test-certificate-authority
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    name: test-certificate-authority
+    kmsKeyId: "ocid1.key.oc1.iad.example" # Replace with actual KMS key OCID
+    certificateAuthorityConfig:
+      - configType: ROOT_CA_GENERATED_INTERNALLY
+        subject:
+          - commonName: "Test Root CA"
+            organization: "Test Organization"
+            organizationalUnit: "Test Unit"
+            country: "US"
+            stateOrProvince: "California"
+            locality: "San Francisco"
+    certificateRevocationListDetails:
+      - objectStorageBucketName: "test-crl-bucket"
+        objectStorageNamespace: "idwsb3nvxazj"  # Replace with your namespace
+        customFormattedUrls:
+          - "http://crl.example.com/test-ca.crl"
+    validity:
+      - timeOfValidityNotAfter: "2030-12-31T23:59:59.000Z"
+  providerConfigRef:
+    name: default
