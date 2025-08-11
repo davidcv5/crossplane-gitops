@@ -13,7 +13,7 @@ spec:
     vcnIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test-vcn
-    kubernetesVersion: "v1.28.2"
+    kubernetesVersion: "v1.33.1"
     options:
       - addOns:
           - isKubernetesDashboardEnabled: false
