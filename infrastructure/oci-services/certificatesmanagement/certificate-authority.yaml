@@ -16,14 +16,14 @@ spec:
             organization: "Test Organization"
             organizationalUnit: "Test Unit"
             country: "US"
-            stateOrProvince: "California"
-            locality: "San Francisco"
+            stateOrProvinceName: "California"
+            localityName: "San Francisco"
     certificateRevocationListDetails:
-      - objectStorageBucketName: "test-crl-bucket"
-        objectStorageNamespace: "idwsb3nvxazj"  # Replace with your namespace
+      - objectStorageConfig:
+          - objectStorageBucketName: "test-crl-bucket"
+            objectStorageNamespace: "idwsb3nvxazj"  # Replace with your namespace
+            objectStorageObjectNameFormat: "crl-v{}.crl"
         customFormattedUrls:
           - "http://crl.example.com/test-ca.crl"
-    validity:
-      - timeOfValidityNotAfter: "2030-12-31T23:59:59.000Z"
   providerConfigRef:
     name: default
