@@ -8,7 +8,7 @@ spec:
   forProvider:
     compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
     name: test-certificate-authority
-    kmsKeyId: "REPLACE_WITH_KMS_KEY_OCID"  # Replace with actual KMS key OCID after console creation
+    kmsKeyId: "ocid1.key.oc1.iad.ejujurr6aafkq.abuwcljs7n25pvvlgibvmb45b6zqfk6nzdc7hf5pn4nphpdyh76of7kkwqba"  # Replace with actual KMS key OCID after console creation
     certificateAuthorityConfig:
       - configType: ROOT_CA_GENERATED_INTERNALLY
         subject:
