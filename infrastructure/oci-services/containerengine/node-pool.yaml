@@ -10,9 +10,8 @@ spec:
   forProvider:
     compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
     name: test-node-pool
-    clusterIdSelector:
-      matchLabels:
-        testing.upbound.io/example-name: test-oke-cluster
+    clusterIdRef:
+      name: test-oke-cluster
     nodeShape: VM.Standard.E4.Flex
     nodeShapeConfig:
       - memoryInGbs: 16
