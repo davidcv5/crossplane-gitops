@@ -21,7 +21,7 @@ spec:
       - placementConfigs:
           - availabilityDomain: "ekzo:US-ASHBURN-AD-1"
             subnetIdRef:
-              name: test-subnet
+              name: test-node-subnet
         size: 1
     nodeSourceDetails:
       - imageId: "ocid1.image.oc1.iad.aaaaaaaaxknreyk2vq3ftndzpirs3s32s7sviagmyleugk5uu23ug7vrpyrq"  # OKE-compatible image

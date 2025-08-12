@@ -4,5 +4,7 @@ kind: Kustomization
 resources:
   - vcn.yaml
   - subnet.yaml
+  - node-subnet.yaml
   - security-list.yaml
   - network-security-group.yaml
+  # - nat-gateway.yaml
