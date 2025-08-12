@@ -17,7 +17,8 @@ spec:
       - description: "Default route to Internet Gateway"
         destinationType: "CIDR_BLOCK"
         destination: "0.0.0.0/0"
-        networkEntityIdRef:
-          name: test-internet-gateway
+        networkEntityIdSelector:
+          matchLabels:
+            gateway.type: internet
   providerConfigRef:
     name: default

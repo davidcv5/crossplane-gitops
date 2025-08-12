@@ -17,7 +17,8 @@ spec:
       - description: "Default route to NAT Gateway"
         destinationType: "CIDR_BLOCK"
         destination: "0.0.0.0/0"
-        networkEntityIdRef:
-          name: test-nat-gateway
+        networkEntityIdSelector:
+          matchLabels:
+            gateway.type: nat
   providerConfigRef:
     name: default

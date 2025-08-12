@@ -4,6 +4,7 @@ metadata:
   name: test-nat-gateway
   labels:
     testing.upbound.io/example-name: test-nat-gateway
+    gateway.type: nat
   annotations:
     argocd.argoproj.io/sync-wave: "5"
 spec:
