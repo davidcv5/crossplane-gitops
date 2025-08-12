@@ -8,7 +8,7 @@ spec:
   forProvider:
     compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
     name: test-certificate-authority
-    kmsKeyId: "ocid1.key.oc1.iad.ejujurr6aafkq.abuwcljs7n25pvvlgibvmb45b6zqfk6nzdc7hf5pn4nphpdyh76of7kkwqba"  # Replace with actual KMS key OCID after console creation
+    kmsKeyId: "ocid1.key.oc1.iad.ejujurr6aafkq.abuwcljtosq5zrlr3evq6batgl2e7qg6x4ecwwcj3gfjc75yrj2n4gt4cv5a"
     certificateAuthorityConfig:
       - configType: ROOT_CA_GENERATED_INTERNALLY
         subject:
@@ -16,7 +16,7 @@ spec:
             organization: "Test Organization"
             organizationalUnit: "Test Unit"
             country: "US"
-            stateOrProvinceName: "California"
-            localityName: "San Francisco"
+            stateOrProvinceName: "Seattle"
+            localityName: "Washington"
   providerConfigRef:
     name: default
