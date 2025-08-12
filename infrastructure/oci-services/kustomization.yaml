@@ -2,9 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - objectstorage
+  # Essential components for OKE cluster
   - networking
   - containerengine
-  - loadbalancer
+  
+  # Optional components (disabled for minimal cluster)
+  # - objectstorage      # Not needed for cluster functionality
+  # - loadbalancer       # Not needed (OKE has built-in LB support)
   # - networkloadbalancer
   # - certificatesmanagement

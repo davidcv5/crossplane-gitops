@@ -1,0 +1,24 @@
+apiVersion: networking.oci.upbound.io/v1alpha1
+kind: Subnet
+metadata:
+  name: test-public-api-subnet
+  labels:
+    testing.upbound.io/example-name: test-public-api-subnet
+    subnet.type: api-endpoint
+  annotations:
+    argocd.argoproj.io/sync-wave: "7"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    displayName: "test-public-api-subnet"
+    cidrBlock: "10.0.4.0/29"  # /29 is sufficient for API endpoint as per Oracle docs
+    dnsLabel: "api"
+    prohibitInternetIngress: false  # PUBLIC subnet - allows internet access
+    vcnIdRef:
+      name: test-vcn
+    routeTableIdRef:
+      name: test-public-route-table  # Routes through Internet Gateway
+    securityListIdRef:
+      name: test-oke-security-list
+  providerConfigRef:
+    name: default

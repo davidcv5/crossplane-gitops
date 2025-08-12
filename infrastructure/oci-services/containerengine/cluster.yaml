@@ -21,7 +21,7 @@ spec:
     endpointConfig:
     - isPublicIpEnabled: true
       subnetIdRef:
-        name: test-subnet
+        name: test-public-api-subnet
 
     # Cluster pod network options
     clusterPodNetworkOptions:

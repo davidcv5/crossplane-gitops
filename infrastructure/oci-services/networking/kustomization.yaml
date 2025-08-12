@@ -2,23 +2,24 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  # VCN (sync wave 5)
+  # VCN (sync wave 4)
   - vcn.yaml
   
-  # Gateways (sync wave 4)
+  # Gateways (sync wave 5)
   - internet-gateway.yaml
   - nat-gateway.yaml
   
-  # Route Tables (sync wave 5) 
+  # Route Tables (sync wave 6) 
   - public-route-table.yaml
   - private-route-table.yaml
   
   # Security Lists (sync wave 5)
   - oke-security-list.yaml
-  - security-list.yaml
-  - network-security-group.yaml
+  # - security-list.yaml         # Unused - no subnet references
+  # - network-security-group.yaml # Unused - no references found
   
-  # Subnets (sync wave 6)
+  # Subnets (sync wave 7)
   - subnet.yaml
   - node-subnet.yaml
   - service-subnet.yaml
+  - public-api-subnet.yaml
