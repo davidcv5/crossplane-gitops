@@ -10,3 +10,4 @@ resources:
   - loadbalancer
   - networkloadbalancer
   - certificatesmanagement
+  - kms
