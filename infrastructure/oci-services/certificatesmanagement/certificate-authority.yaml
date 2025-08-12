@@ -11,12 +11,16 @@ spec:
     kmsKeyId: "ocid1.key.oc1.iad.ejujurr6aafkq.abuwcljtosq5zrlr3evq6batgl2e7qg6x4ecwwcj3gfjc75yrj2n4gt4cv5a"
     certificateAuthorityConfig:
       - configType: ROOT_CA_GENERATED_INTERNALLY
+        signingAlgorithm: SHA256_WITH_RSA
         subject:
           - commonName: "Test Root CA"
             organization: "Test Organization"
             organizationalUnit: "Test Unit"
             country: "US"
-            stateOrProvinceName: "Seattle"
-            localityName: "Washington"
+            stateOrProvinceName: "Washington"
+            localityName: "Seattle"
+        validity:
+          - timeOfValidityNotBefore: "2025-08-12T00:00:00Z"
+            timeOfValidityNotAfter: "2030-08-12T00:00:00Z"
   providerConfigRef:
     name: default
