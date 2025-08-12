@@ -37,8 +37,5 @@ spec:
       kubernetesNetworkConfig:
       - podsCidr: "10.244.0.0/16"
         servicesCidr: "10.96.0.0/16"
-      serviceLbSubnetIdsSelector:
-        matchLabels:
-          testing.upbound.io/example-name: test-subnet
   providerConfigRef:
     name: default
