@@ -18,13 +18,13 @@ spec:
       - memoryInGbs: 16
         ocpus: 1
     nodeConfigDetails:
-      - size: 1
-        placementConfigs:
+      - placementConfigs:
           - availabilityDomain: "ekzo:US-ASHBURN-AD-1"
             subnetIdRef:
               name: test-subnet
+        size: 1
     nodeSourceDetails:
-      - imageId: "ocid1.image.oc1.iad.aaaaaaaagj4j3vtqhfgjqbmftiqpa6jxhpelhxn4otvnsvbjrclqvkwd3xaq"  # Oracle Linux 7.9
+      - imageId: "ocid1.image.oc1.iad.aaaaaaaaxknreyk2vq3ftndzpirs3s32s7sviagmyleugk5uu23ug7vrpyrq"  # OKE-compatible image
         sourceType: "IMAGE"
   providerConfigRef:
     name: default
