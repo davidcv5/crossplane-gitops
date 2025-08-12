@@ -3,7 +3,7 @@ kind: NodePool
 metadata:
   name: test-node-pool
   annotations:
-    argocd.argoproj.io/sync-wave: "8"
+    argocd.argoproj.io/sync-wave: "9"
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true,RespectIgnoreDifferences=true,ServerSideApply=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
 spec:

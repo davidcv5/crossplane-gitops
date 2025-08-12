@@ -5,7 +5,7 @@ metadata:
   labels:
     testing.upbound.io/example-name: test-nat-gateway
   annotations:
-    argocd.argoproj.io/sync-wave: "6"
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   forProvider:
     compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"

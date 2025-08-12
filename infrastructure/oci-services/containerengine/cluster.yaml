@@ -5,7 +5,7 @@ metadata:
   labels:
     testing.upbound.io/example-name: test-oke-cluster
   annotations:
-    argocd.argoproj.io/sync-wave: "7"
+    argocd.argoproj.io/sync-wave: "8"
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true,RespectIgnoreDifferences=true,ServerSideApply=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
 spec:
