@@ -6,5 +6,5 @@ resources:
   - networking
   - containerengine
   - loadbalancer
-  - networkloadbalancer
+  # - networkloadbalancer
   # - certificatesmanagement
