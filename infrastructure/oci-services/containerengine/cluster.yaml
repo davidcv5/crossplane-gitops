@@ -10,18 +10,16 @@ spec:
   forProvider:
     compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
     name: test-oke-cluster
-    vcnIdSelector:
-      matchLabels:
-        testing.upbound.io/example-name: test-vcn
+    vcnIdRef:
+      name: test-vcn
     type: "BASIC_CLUSTER"
     kubernetesVersion: "v1.33.1"
     
     # Cluster endpoint configuration
     endpointConfig:
     - isPublicIpEnabled: true
-      subnetIdSelector:
-        matchLabels:
-          testing.upbound.io/example-name: test-subnet
+      subnetIdRef:
+        name: test-subnet
     
     # Cluster pod network options
     clusterPodNetworkOptions:
@@ -37,8 +35,7 @@ spec:
       kubernetesNetworkConfig:
       - podsCidr: "10.244.0.0/16"
         servicesCidr: "10.96.0.0/16"
-      serviceLbSubnetIdSelector:
-        matchLabels:
-          testing.upbound.io/example-name: test-subnet
+      serviceLbSubnetIdRef:
+        name: test-subnet
   providerConfigRef:
     name: default
