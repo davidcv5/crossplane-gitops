@@ -1,7 +1,7 @@
 apiVersion: certificatesmanagement.oci.upbound.io/v1alpha1
 kind: CertificateAuthority
 metadata:
-  name: test-certificate-authority
+  name: test-certificate-authority-2
   annotations:
     argocd.argoproj.io/sync-wave: "5"
 spec:
