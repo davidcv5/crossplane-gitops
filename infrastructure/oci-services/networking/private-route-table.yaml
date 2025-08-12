@@ -19,6 +19,6 @@ spec:
         destination: "0.0.0.0/0"
         networkEntityIdSelector:
           matchLabels:
-            gateway.type: nat
+            testing.upbound.io/example-name: test-nat-gateway
   providerConfigRef:
     name: default
