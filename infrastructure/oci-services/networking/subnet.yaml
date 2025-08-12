@@ -4,16 +4,21 @@ metadata:
   name: test-subnet
   labels:
     testing.upbound.io/example-name: test-subnet
+    subnet.type: cluster
   annotations:
     argocd.argoproj.io/sync-wave: "6"
 spec:
   forProvider:
     compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
-    displayName: test-subnet
+    displayName: "test-cluster-subnet"
     cidrBlock: "10.0.1.0/24"
-    vcnIdSelector:
-      matchLabels:
-        testing.upbound.io/example-name: test-vcn
-    dnsLabel: testsubnet
+    dnsLabel: "cluster"
+    prohibitInternetIngress: true
+    vcnIdRef:
+      name: test-vcn
+    routeTableIdRef:
+      name: test-private-route-table
+    securityListIdRef:
+      name: test-oke-security-list
   providerConfigRef:
     name: default

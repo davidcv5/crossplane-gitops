@@ -1,0 +1,17 @@
+apiVersion: networking.oci.upbound.io/v1alpha1
+kind: NatGateway
+metadata:
+  name: test-nat-gateway
+  labels:
+    testing.upbound.io/example-name: test-nat-gateway
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    displayName: test-nat-gateway
+    blockTraffic: false
+    vcnIdRef:
+      name: test-vcn
+  providerConfigRef:
+    name: default

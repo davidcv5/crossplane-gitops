@@ -1,0 +1,23 @@
+apiVersion: networking.oci.upbound.io/v1alpha1
+kind: RouteTable
+metadata:
+  name: test-private-route-table
+  labels:
+    testing.upbound.io/example-name: test-private-route-table
+    route.type: private
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+spec:
+  forProvider:
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    displayName: "test-private-rt"
+    vcnIdRef:
+      name: test-vcn
+    routeRules:
+      - description: "Default route to NAT Gateway"
+        destinationType: "CIDR_BLOCK"
+        destination: "0.0.0.0/0"
+        networkEntityIdRef:
+          name: test-nat-gateway
+  providerConfigRef:
+    name: default
