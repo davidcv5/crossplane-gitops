@@ -4,6 +4,8 @@ metadata:
   name: test-node-pool
   annotations:
     argocd.argoproj.io/sync-wave: "8"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true,RespectIgnoreDifferences=true,ServerSideApply=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
 spec:
   forProvider:
     compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
@@ -16,12 +18,11 @@ spec:
       - memoryInGbs: 16
         ocpus: 1
     nodeConfigDetails:
-      - size: 2
+      - size: 1
         placementConfigs:
           - availabilityDomain: "ekzo:US-ASHBURN-AD-1"
-            subnetIdSelector:
-              matchLabels:
-                testing.upbound.io/example-name: test-subnet
+            subnetIdRef:
+              name: test-subnet
     nodeSourceDetails:
       - imageId: "ocid1.image.oc1.iad.aaaaaaaagj4j3vtqhfgjqbmftiqpa6jxhpelhxn4otvnsvbjrclqvkwd3xaq"  # Oracle Linux 7.9
         sourceType: "IMAGE"
