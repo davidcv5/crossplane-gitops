@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "3"
 spec:
-  package: iad.ocir.io/iddevjmhjw0n/provider-oci-networking:v0.0.11-test
+  package: iad.ocir.io/iddevjmhjw0n/provider-oci-networking:v0.0.12-test
   packagePullPolicy: IfNotPresent
   revisionActivationPolicy: Automatic
   revisionHistoryLimit: 1
