@@ -19,8 +19,9 @@ spec:
       - size: 2
         placementConfigs:
           - availabilityDomain: "ekzo:US-ASHBURN-AD-1"
-            subnetIdRef:
-              name: test-subnet
+            subnetIdSelector:
+              matchLabels:
+                testing.upbound.io/example-name: test-subnet
     nodeSourceDetails:
       - imageId: "ocid1.image.oc1.iad.aaaaaaaagj4j3vtqhfgjqbmftiqpa6jxhpelhxn4otvnsvbjrclqvkwd3xaq"  # Oracle Linux 7.9
         sourceType: "IMAGE"
