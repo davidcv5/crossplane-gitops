@@ -1,13 +1,13 @@
 apiVersion: certificatesmanagement.oci.upbound.io/v1alpha1
 kind: CertificateAuthority
 metadata:
-  name: test-certificate-authority-2
+  name: test-certificate-authority
   annotations:
     argocd.argoproj.io/sync-wave: "5"
 spec:
   forProvider:
     compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
-    name: test-certificate-authority
+    name: test-certificate-authority-2
     kmsKeyId: "ocid1.key.oc1.iad.ejujurr6aafkq.abuwcljtosq5zrlr3evq6batgl2e7qg6x4ecwwcj3gfjc75yrj2n4gt4cv5a"
     certificateAuthorityConfig:
       - configType: ROOT_CA_GENERATED_INTERNALLY
