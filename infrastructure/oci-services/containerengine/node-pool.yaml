@@ -13,15 +13,14 @@ spec:
         testing.upbound.io/example-name: test-oke-cluster
     nodeShape: VM.Standard.E4.Flex
     nodeShapeConfig:
-      - memory: 16
+      - memoryInGbs: 16
         ocpus: 1
     nodeConfigDetails:
       - size: 2
         placementConfigs:
-          - availabilityDomain: "KTWu:US-ASHBURN-AD-1"
-            subnetIdSelector:
-              matchLabels:
-                testing.upbound.io/example-name: test-subnet
+          - availabilityDomain: "ekzo:US-ASHBURN-AD-1"
+            subnetIdRef:
+              name: test-subnet
     nodeSourceDetails:
       - imageId: "ocid1.image.oc1.iad.aaaaaaaagj4j3vtqhfgjqbmftiqpa6jxhpelhxn4otvnsvbjrclqvkwd3xaq"  # Oracle Linux 7.9
         sourceType: "IMAGE"
