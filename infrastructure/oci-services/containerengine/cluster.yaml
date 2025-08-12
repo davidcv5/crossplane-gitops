@@ -9,10 +9,10 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true,RespectIgnoreDifferences=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/ignore-differences: |
-      jsonPointers:
-      - /spec/forProvider/vcnId
-      - /spec/forProvider/endpointConfig/0/subnetId
-      - /status
+      jqPathExpressions:
+      - .spec.forProvider.vcnId
+      - .spec.forProvider.endpointConfig[0].subnetId
+      - .status.atProvider
 spec:
   forProvider:
     compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
