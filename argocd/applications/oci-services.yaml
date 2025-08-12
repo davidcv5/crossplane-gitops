@@ -17,11 +17,11 @@ spec:
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true
+      selfHeal: false  # Recommended for Crossplane infrastructure resources
     syncOptions:
     - CreateNamespace=true
     - RespectIgnoreDifferences=true
-    - ApplyOutOfSyncOnly=true
+    - SkipDryRunOnMissingResource=true
     - Validate=false
     retry:
       limit: 5
