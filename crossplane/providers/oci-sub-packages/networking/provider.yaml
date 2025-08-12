@@ -11,3 +11,5 @@ spec:
   revisionHistoryLimit: 1
   # This provider depends on the family provider
   skipDependencyResolution: false
+  runtimeConfigRef:
+    name: oci-sub-packages-runtime-config
