@@ -7,6 +7,12 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "7"
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true,RespectIgnoreDifferences=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/ignore-differences: |
+      jsonPointers:
+      - /spec/forProvider/vcnId
+      - /spec/forProvider/endpointConfig/0/subnetId
+      - /status
 spec:
   forProvider:
     compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
@@ -15,17 +21,17 @@ spec:
       name: test-vcn
     type: "BASIC_CLUSTER"
     kubernetesVersion: "v1.33.1"
-    
+
     # Cluster endpoint configuration
     endpointConfig:
     - isPublicIpEnabled: true
       subnetIdRef:
         name: test-subnet
-    
+
     # Cluster pod network options
     clusterPodNetworkOptions:
     - cniType: "FLANNEL_OVERLAY"
-    
+
     # Cluster options
     options:
     - addOns:
