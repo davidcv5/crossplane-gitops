@@ -17,8 +17,7 @@ spec:
       - description: "Default route to Internet Gateway"
         destinationType: "CIDR_BLOCK"
         destination: "0.0.0.0/0"
-        networkEntityIdSelector:
-          matchLabels:
-            testing.upbound.io/example-name: test-internet-gateway
+        networkEntityIdRef:
+          name: test-internet-gateway
   providerConfigRef:
     name: default
