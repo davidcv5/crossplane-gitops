@@ -359,8 +359,6 @@ spec:
       kind: Cluster
       spec:
         forProvider:
-          vcnIdSelector:
-            matchControllerRef: true
           type: "BASIC_CLUSTER"
           kubernetesVersion: "v1.33.1"
           
@@ -413,14 +411,12 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.servicesCidr
       toFieldPath: spec.forProvider.options[0].kubernetesNetworkConfig[0].servicesCidr
-    # Provide VCN ID directly from composition status as backup to selector
+    # Provide VCN ID directly from composition status (more reliable than selector)
     - type: FromCompositeFieldPath
       fromFieldPath: status.vcnId
       toFieldPath: spec.forProvider.vcnId
       policy:
         fromFieldPath: Required
-    # Note: endpointConfig uses subnetIdSelector with type: cluster label
-    # which should work fine - no direct ID needed
     
     # Map cluster information to status
     - type: ToCompositeFieldPath
