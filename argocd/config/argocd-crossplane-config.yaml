@@ -21,12 +21,12 @@ data:
     - .spec.forProvider.endpointConfig[0].subnetId
     - .spec.forProvider.options[0].serviceLbSubnetIds
     - .status.atProvider
-  
+
   resource.customizations.ignoreDifferences.networking.oci.upbound.io_Subnet: |
     jqPathExpressions:
     - .spec.forProvider.vcnId
     - .status.atProvider
-  
+
   resource.customizations.ignoreDifferences.containerengine.oci.upbound.io_NodePool: |
     jqPathExpressions:
     - .spec.forProvider.clusterId
@@ -124,40 +124,40 @@ data:
       - '.metadata.annotations."cluster-autoscaler.kubernetes.io/last-updated"'
       # Ignore the annotation of the legacy Leases election
       - '.metadata.annotations."control-plane.alpha.kubernetes.io/leader"'
-  
+
   resource.customizations.ignoreResourceUpdates.Endpoints: |
     jsonPointers:
       - /metadata
       - /subsets
-  
+
   resource.customizations.ignoreResourceUpdates.all: |
     jsonPointers:
       - /status
-  
+
   resource.customizations.ignoreResourceUpdates.apps_ReplicaSet: |
     jqPathExpressions:
       - '.metadata.annotations."deployment.kubernetes.io/desired-replicas"'
       - '.metadata.annotations."deployment.kubernetes.io/max-replicas"'
       - '.metadata.annotations."rollout.argoproj.io/desired-replicas"'
-  
+
   resource.customizations.ignoreResourceUpdates.argoproj.io_Application: |
     jqPathExpressions:
       - '.metadata.annotations."notified.notifications.argoproj.io"'
       - '.metadata.annotations."argocd.argoproj.io/refresh"'
       - '.metadata.annotations."argocd.argoproj.io/hydrate"'
       - '.operation'
-  
+
   resource.customizations.ignoreResourceUpdates.argoproj.io_Rollout: |
     jqPathExpressions:
       - '.metadata.annotations."notified.notifications.argoproj.io"'
-  
+
   resource.customizations.ignoreResourceUpdates.autoscaling_HorizontalPodAutoscaler: |
     jqPathExpressions:
       - '.metadata.annotations."autoscaling.alpha.kubernetes.io/behavior"'
       - '.metadata.annotations."autoscaling.alpha.kubernetes.io/conditions"'
       - '.metadata.annotations."autoscaling.alpha.kubernetes.io/metrics"'
       - '.metadata.annotations."autoscaling.alpha.kubernetes.io/current-metrics"'
-  
+
   resource.customizations.ignoreResourceUpdates.discovery.k8s.io_EndpointSlice: |
     jsonPointers:
       - /metadata
