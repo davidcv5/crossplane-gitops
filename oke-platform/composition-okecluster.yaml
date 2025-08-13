@@ -10,7 +10,7 @@ spec:
   compositeTypeRef:
     apiVersion: oke.crossplane.io/v1alpha1
     kind: Cluster
-  
+
   resources:
   # VCN (Virtual Cloud Network)
   - name: vcn
@@ -182,7 +182,7 @@ spec:
         forProvider:
           vcnIdSelector:
             matchControllerRef: true
-          
+
           # Ingress rules
           ingressSecurityRules:
           # Allow all traffic within VCN
@@ -190,7 +190,7 @@ spec:
             protocol: "all"
             source: "10.0.0.0/16"
             stateless: false
-          
+
           # Allow SSH from anywhere (you may want to restrict this)
           - description: "Allow SSH traffic"
             protocol: "6"
@@ -199,7 +199,7 @@ spec:
             tcpOptions:
             - min: 22
               max: 22
-          
+
           # Allow Kubernetes API access
           - description: "Allow Kubernetes API traffic"
             protocol: "6"
@@ -208,7 +208,7 @@ spec:
             tcpOptions:
             - min: 6443
               max: 6443
-              
+
           # Egress rules
           egressSecurityRules:
           # Allow all outbound traffic
@@ -216,7 +216,7 @@ spec:
             protocol: "all"
             destination: "0.0.0.0/0"
             stateless: false
-            
+
         providerConfigRef:
           name: default
     patches:
@@ -361,20 +361,18 @@ spec:
         forProvider:
           type: "BASIC_CLUSTER"
           kubernetesVersion: "v1.33.1"
-          lifecycle:
-            preventDestroy: false
-          
+
           # Cluster endpoint configuration
           endpointConfig:
           - isPublicIpEnabled: false
             subnetIdSelector:
               matchLabels:
                 type: cluster
-          
+
           # Cluster pod network options
           clusterPodNetworkOptions:
           - cniType: "FLANNEL_OVERLAY"
-          
+
           # Cluster options
           options:
           - addOns:
@@ -388,7 +386,7 @@ spec:
             serviceLbSubnetIdSelector:
               matchLabels:
                 type: services
-                
+
         providerConfigRef:
           name: default
     patches:
@@ -413,13 +411,13 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.servicesCidr
       toFieldPath: spec.forProvider.options[0].kubernetesNetworkConfig[0].servicesCidr
-    # Provide VCN ID directly from composition status 
+    # Provide VCN ID directly from composition status
     - type: FromCompositeFieldPath
       fromFieldPath: status.vcnId
       toFieldPath: spec.forProvider.vcnId
       policy:
         fromFieldPath: Required
-    
+
     # Map cluster information to status
     - type: ToCompositeFieldPath
       fromFieldPath: status.atProvider.id
@@ -427,7 +425,7 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: status.atProvider.endpoints[0].privateEndpoint
       toFieldPath: status.clusterEndpoint
-    
+
     # Generate kubeconfig command
     - type: CombineToComposite
       combine:
@@ -462,7 +460,7 @@ spec:
           nodeSourceDetails:
           - sourceType: "IMAGE"
             imageId: ""  # Will be patched
-          
+
         providerConfigRef:
           name: default
     patches:
@@ -506,12 +504,12 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.kubernetesVersion
       toFieldPath: spec.forProvider.kubernetesVersion
-    
+
     # Map node pool information to status
     - type: ToCompositeFieldPath
       fromFieldPath: status.atProvider.id
       toFieldPath: status.nodePoolId
-    
+
     # Add readiness check to ensure subnet is ready before creating NodePool
     readinessChecks:
     - type: MatchString
