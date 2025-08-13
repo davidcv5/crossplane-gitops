@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/davidcv5/crossplane-gitops
-    targetRevision: sub-package
+    targetRevision: sub-package-amd64
     path: crossplane/providers/oci-sub-packages
   destination:
     server: https://kubernetes.default.svc
