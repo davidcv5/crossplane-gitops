@@ -361,6 +361,8 @@ spec:
         forProvider:
           type: "BASIC_CLUSTER"
           kubernetesVersion: "v1.33.1"
+          lifecycle:
+            preventDestroy: false
           
           # Cluster endpoint configuration
           endpointConfig:
@@ -411,7 +413,7 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.cluster.servicesCidr
       toFieldPath: spec.forProvider.options[0].kubernetesNetworkConfig[0].servicesCidr
-    # Provide VCN ID directly from composition status (more reliable than selector)
+    # Provide VCN ID directly from composition status 
     - type: FromCompositeFieldPath
       fromFieldPath: status.vcnId
       toFieldPath: spec.forProvider.vcnId
