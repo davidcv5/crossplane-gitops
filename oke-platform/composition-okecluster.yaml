@@ -521,9 +521,3 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: status.atProvider.id
       toFieldPath: status.nodePoolId
-
-    # Add readiness check to ensure subnet is ready before creating NodePool
-    readinessChecks:
-    - type: MatchString
-      fieldPath: status.nodeSubnetId
-      matchString: "ocid1.subnet"
