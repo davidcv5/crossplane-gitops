@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/davidcv5/crossplane-gitops
-    targetRevision: sub-package
+    targetRevision: github-actions-build
     path: crossplane/providers/services/compute
   destination:
     server: https://kubernetes.default.svc

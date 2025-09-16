@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: crossplane-project
+  name: crossplane
   namespace: argocd
 spec:
   description: Crossplane infrastructure management project
