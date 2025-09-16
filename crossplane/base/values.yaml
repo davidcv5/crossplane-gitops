@@ -1,0 +1,16 @@
+metrics:
+  enabled: true
+resourcesCrossplane:
+  limits:
+    cpu: 100m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+resourcesRBACManager:
+  limits:
+    cpu: 100m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
