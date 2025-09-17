@@ -6,11 +6,12 @@ metadata:
     provider: oci
     service: containerengine
 spec:
-  writeConnectionSecretsToNamespace: crossplane-system
   compositeTypeRef:
     apiVersion: oke.crossplane.io/v1alpha1
     kind: Cluster
-
+  mode: Resources
+  publishConnectionDetailsWithStoreConfigRef:
+    name: default
   resources:
   # VCN (Virtual Cloud Network)
   - name: vcn
