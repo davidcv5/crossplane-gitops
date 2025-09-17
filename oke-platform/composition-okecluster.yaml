@@ -6,12 +6,11 @@ metadata:
     provider: oci
     service: containerengine
 spec:
+  writeConnectionSecretsToNamespace: crossplane-system
   compositeTypeRef:
     apiVersion: oke.crossplane.io/v1alpha1
     kind: Cluster
-  mode: Resources
-  publishConnectionDetailsWithStoreConfigRef:
-    name: default
+
   resources:
   # VCN (Virtual Cloud Network)
   - name: vcn
@@ -460,7 +459,7 @@ spec:
       toFieldPath: status.clusterEndpoint
 
     # Note: Clients can access spec.region directly from the claim/XR
-    # For kubeconfig generation, use: 
+    # For kubeconfig generation, use:
     # oci ce cluster create-kubeconfig --cluster-id $(kubectl get claim NAME -o jsonpath='{.status.clusterId}') --region $(kubectl get claim NAME -o jsonpath='{.spec.region}')
     readinessChecks:
     - type: MatchCondition
