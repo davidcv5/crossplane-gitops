@@ -20,10 +20,14 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    # ServerSideApply and Validate=false prevent webhook timeout issues
+    # when creating XRDs/Compositions in Crossplane
     syncOptions:
     - CreateNamespace=true
     - RespectIgnoreDifferences=true
     - ApplyOutOfSyncOnly=true
+    - ServerSideApply=true
+    - Validate=false
     retry:
       limit: 5
       backoff:
