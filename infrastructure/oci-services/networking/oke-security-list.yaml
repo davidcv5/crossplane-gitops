@@ -9,11 +9,11 @@ metadata:
     argocd.argoproj.io/sync-wave: "5"
 spec:
   forProvider:
-    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaavn2sncyioaydldub5sbu44yolvenr44fcsb57vtu3z6mxhizndva"
     displayName: "test-oke-seclist"
     vcnIdRef:
       name: test-vcn
-    
+
     # Ingress rules
     ingressSecurityRules:
       # Allow all traffic within VCN
@@ -21,7 +21,7 @@ spec:
         protocol: "all"
         source: "10.0.0.0/16"
         stateless: false
-      
+
       # Allow SSH from anywhere (restrict in production)
       - description: "Allow SSH traffic"
         protocol: "6"
@@ -30,7 +30,7 @@ spec:
         tcpOptions:
           - min: 22
             max: 22
-      
+
       # Allow Kubernetes API access
       - description: "Allow Kubernetes API traffic"
         protocol: "6"
@@ -39,7 +39,7 @@ spec:
         tcpOptions:
           - min: 6443
             max: 6443
-    
+
     # Egress rules
     egressSecurityRules:
       # Allow all outbound traffic
@@ -47,6 +47,6 @@ spec:
         protocol: "all"
         destination: "0.0.0.0/0"
         stateless: false
-        
+
   providerConfigRef:
     name: default

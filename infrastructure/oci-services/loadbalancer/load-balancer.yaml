@@ -8,7 +8,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "7"
 spec:
   forProvider:
-    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaavn2sncyioaydldub5sbu44yolvenr44fcsb57vtu3z6mxhizndva"
     displayName: test-load-balancer
     shape: flexible
     shapeDetails:
