@@ -11,5 +11,9 @@ spec:
     namespace: iddevjmhjw0n # Replace with your OCI tenancy namespace
     storageTier: Standard
     accessType: NoPublicAccess
+    freeformTags:
+      Environment: "Development"
+      ManagedBy: "Crossplane"
+      Project: "GitOps-Demo"
   providerConfigRef:
     name: default
