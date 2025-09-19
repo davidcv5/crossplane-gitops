@@ -3,7 +3,7 @@ kind: Provider
 metadata:
   name: provider-oci-identity
 spec:
-  package: ghcr.io/oracle-samples/provider-oci-identity:v0.0.8-test
+  package: ghcr.io/oracle-samples/provider-oci-identity:v0.0.1-alpha.1-amd64
   # packagePullSecrets:
   # - name: ocir-secret
   packagePullPolicy: IfNotPresent
