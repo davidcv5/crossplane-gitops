@@ -8,7 +8,7 @@ spec:
   forProvider:
     compartmentId: "ocid1.compartment.oc1..aaaaaaaavn2sncyioaydldub5sbu44yolvenr44fcsb57vtu3z6mxhizndva"
     name: crossplane-test-bucket-01
-    namespace: idwsb3nvxazj # Replace with your OCI tenancy namespace
+    namespace: iddevjmhjw0n # Replace with your OCI tenancy namespace
     storageTier: Standard
     accessType: NoPublicAccess
   providerConfigRef:
