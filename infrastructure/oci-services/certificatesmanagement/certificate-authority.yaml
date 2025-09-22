@@ -6,7 +6,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "5"
 spec:
   forProvider:
-    compartmentId: "ocid1.compartment.oc1..aaaaaaaavn2sncyioaydldub5sbu44yolvenr44fcsb57vtu3z6mxhizndva"
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
     name: test-certificate-authority-v3
     kmsKeyId: "ocid1.key.oc1.iad.ejujurr6aafkq.abuwcljtosq5zrlr3evq6batgl2e7qg6x4ecwwcj3gfjc75yrj2n4gt4cv5a"
     certificateAuthorityConfig:
