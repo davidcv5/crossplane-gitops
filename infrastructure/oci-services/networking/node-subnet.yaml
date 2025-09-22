@@ -10,7 +10,7 @@ metadata:
 spec:
   forProvider:
     cidrBlock: "10.0.2.0/24"  # Dedicated CIDR for worker nodes
-    compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+    compartmentId: "ocid1.compartment.oc1..aaaaaaaavn2sncyioaydldub5sbu44yolvenr44fcsb57vtu3z6mxhizndva"
     displayName: "test-node-subnet"
     dnsLabel: "nodes"
     prohibitInternetIngress: true

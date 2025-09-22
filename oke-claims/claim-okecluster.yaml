@@ -5,7 +5,7 @@ metadata:
   # ArgoCD will deploy to default namespace as specified in the app
 spec:
   # OCI Compartment where resources will be created
-  compartmentId: "ocid1.compartment.oc1..aaaaaaaahkmcqkcdnvjxdykdiai4ncm5f4o3n3gmtbpy6cnvey2nspef6k5a"
+  compartmentId: "ocid1.compartment.oc1..aaaaaaaavn2sncyioaydldub5sbu44yolvenr44fcsb57vtu3z6mxhizndva"
 
   # Network configuration
   network:
